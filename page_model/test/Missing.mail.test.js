@@ -1,15 +1,15 @@
 import loginPage from '../pages/loginPage'
 import { InventoryPage } from '../pages/Inventory_Page'
 import { ClientFunction } from 'testcafe'
-import { CartPage } from '../pages/Cart_Page';
-import { CheckOutStepOne } from '../pages/Checkout_StepOne';
+import { CartPage } from '../pages/Cart_Pages'
+import { CheckOutStepOne } from '../pages/Checkout_StepOne'
 
 
 let inventoryPage = null;
 let cartPage = null;
 let checkOutStepOne = null;
 
-fixture('Navigate Shoping cart')
+fixture('Missing Mail')
     .page`https://www.saucedemo.com/`
     .beforeEach(()=>{
     inventoryPage = new InventoryPage()
