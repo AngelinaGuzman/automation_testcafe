@@ -1,5 +1,4 @@
 
-import welcomePage from '../pages/welcomePage'
 import loginPage from '../pages/loginPage'
 import { InventoryPage } from '../pages/Inventory_Page'
 import { ClientFunction } from 'testcafe'
@@ -7,14 +6,15 @@ import { ClientFunction } from 'testcafe'
 
 let inventoryPage = null;
 
-fixture('Logout from products page')
+fixture('Navigate Shoping cart')
     .page`https://www.saucedemo.com/`
     .beforeEach(()=>{
     inventoryPage = new InventoryPage()
        
     })
 
-test('Logout from product page', async t => {
+
+test('Navigate to the shopping cart', async t => {
     await t.typeText(loginPage.usernameField, 'standard_user')
     await t.typeText(loginPage.passwordField, 'secret_sauce')
     await t.click(loginPage.loginButton)
@@ -23,11 +23,9 @@ test('Logout from product page', async t => {
 
     await t.expect(await getWindowLocation()).eql("https://www.saucedemo.com/inventory.html")
 
-    await t.click(inventoryPage.burgerButton)
-    await t.click(inventoryPage.logoutLink)
+    await t.click(inventoryPage.shoppingCartLink)
 
-    await t.expect(await getWindowLocation()).eql("https://www.saucedemo.com/")
-    await t.expect(welcomePage.loginLogo.exists).ok()
+    await t.expect(await getWindowLocation()).eql("https://www.saucedemo.com/cart.html")
 
 
 })
